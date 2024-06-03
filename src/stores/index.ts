@@ -1,8 +1,8 @@
 import {ref, computed} from 'vue'
 import {defineStore} from 'pinia'
 import {loadMenus} from "@/api/menus";
-import HomeView from "@/views/HomeView.vue";
-import LoginView from "@/views/LoginView.vue";
+import HomeView from "@/views/Home.vue";
+import LoginView from "@/views/Login.vue";
 
 const modules = import.meta.glob('@/views/**/*.vue');
 export const useCounterStore = defineStore('counter', () => {
@@ -23,13 +23,13 @@ export const menusStore = defineStore('menus', {
                 {
                     path: '/home',
                     name: HomeView,
-                    component: loadView('/src/views/HomeView.vue'),
+                    component: loadView('/src/views/Home.vue'),
                     hidden: true
                 },
                 {
                     path: '/',
                     name: HomeView,
-                    component: loadView('/src/views/HomeView.vue')
+                    component: loadView('/src/views/Home.vue')
                 }
             ]
         }
@@ -68,7 +68,7 @@ function formatMenus(menus: any[]) {
 }
 
 function loadView(viewPath: any) {
-    if (viewPath == '/src/views/HomeView.vue') {
+    if (viewPath == '/src/views/Home.vue') {
         return HomeView;
     } else {
         return modules[viewPath];
